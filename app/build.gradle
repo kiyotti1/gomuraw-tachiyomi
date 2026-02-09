@@ -1,0 +1,10 @@
+ext {
+    extName = 'gomuraw'
+    extClass = '.gomuraw'
+    themePkg = 'mangareader'
+    baseUrl = 'https://gomuraw.com/'
+    overrideVersionCode = 0
+    isNsfw = true
+}
+
+apply from: "$rootDir/common.gradle"
