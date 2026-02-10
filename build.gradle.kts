@@ -14,9 +14,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // Keiyoushiのリポジトリ（現在、拡張機能の多くがここを参照しています）
-        maven { url = uri("https://maven.keiyoushi.org/repository/maven-public/") }
-        maven { url = uri("https://raw.githubusercontent.com/mihonapp/maven/master") }
+        // JitPackがあればGitHubから直接ライブラリを生成できます
         maven { url = uri("https://jitpack.io") }
     }
 }
