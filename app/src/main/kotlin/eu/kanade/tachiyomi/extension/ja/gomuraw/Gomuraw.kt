@@ -3,7 +3,7 @@ package eu.kanade.tachiyomi.extension.ja.gomuraw
 import okhttp3.Request
 // インポートを削除（Stub内に定義したため不要）
 
-class gomuraw : MangaReader("gomuraw", "https://gomuraw.dev", "ja") {
+class Gomuraw : MangaReader("gomuraw", "https://gomuraw.dev", "ja") {
     
     override val popularMangaSelector = "div.bs, div.manga-item, div.utao, div.listupd div.bs"
     override val popularMangaNextPageSelector = "div.pagination a.next, .next.page-numbers"
