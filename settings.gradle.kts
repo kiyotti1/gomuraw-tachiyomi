@@ -1,32 +1,17 @@
 /**
- * Add or remove modules to load as needed for local development here.
+ * あなたの現在のフォルダ構成（app/src/...）に合わせた設定
  */
-loadAllIndividualExtensions()
-// loadIndividualExtension("all", "mangadex")
+include(":app")
+
+// 元々あった複雑な自動読み込みは、一旦コメントアウトか削除します
+// loadAllIndividualExtensions() 
 
 /**
  * ===================================== COMMON CONFIGURATION ======================================
  */
-// include(":core")
-
-// Load all modules under /lib
-File(rootDir, "lib").eachDir { include("lib:${it.name}") }
-
-// Load all modules under /lib-multisrc
-File(rootDir, "lib-multisrc").eachDir { include("lib-multisrc:${it.name}") }
-
-/**
- * ======================================== HELPER FUNCTION ========================================
- */
-fun loadAllIndividualExtensions() {
-    File(rootDir, "src").eachDir { dir ->
-        dir.eachDir { subdir ->
-            include("src:${dir.name}:${subdir.name}")
-        }
-    }
-}
-fun loadIndividualExtension(lang: String, name: String) {
-    include("src:${lang}:${name}")
+// Load all modules under /lib (もしあれば)
+if (File(rootDir, "lib").exists()) {
+    File(rootDir, "lib").eachDir { include("lib:${it.name}") }
 }
 
 fun File.eachDir(block: (File) -> Unit) {
