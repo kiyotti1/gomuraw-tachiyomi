@@ -1,12 +1,12 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlinx-serialization'
+    id 'org.jetbrains.kotlin.android' version '1.9.22'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.22'
 }
 
 android {
-    compileSdk 34
     namespace "eu.kanade.tachiyomi.extension.ja.gomuraw"
+    compileSdk 34
 
     sourceSets {
         main {
@@ -48,7 +48,6 @@ android {
 }
 
 dependencies {
+    // 依存関係を「読み取り専用」にするため、ここでシンプルに定義します
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
-    // 必要最低限の Tachiyomi ライブラリ
-    compileOnly "eu.kanade.tachiyomi:lib-subiyomi:1.5"
 }
