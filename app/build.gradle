@@ -53,9 +53,9 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
     
-    // 特定のサーバーではなく、GitHubのソースから直接ビルドして取得する指定
-    compileOnly "com.github.keiyoushi:extensions-lib:multisrc-v1.1"
-    compileOnly "com.github.tachiyomidb:source-api:1.1"
+    // 特定のタグではなく、現在の最新（master/main）を指定します
+    compileOnly "com.github.keiyoushi.extensions-lib:multisrc:master-SNAPSHOT"
+    compileOnly "com.github.tachiyomiorg:source-api:main-SNAPSHOT"
     
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
     implementation "org.jsoup:jsoup:1.17.2"
