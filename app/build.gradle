@@ -52,10 +52,8 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
-    
-    // ネットから探す設定を消して、以下の1行を追加します
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
     implementation "org.jsoup:jsoup:1.17.2"
+    
+    // 見つからないライブラリの指定をすべて消しました
 }
