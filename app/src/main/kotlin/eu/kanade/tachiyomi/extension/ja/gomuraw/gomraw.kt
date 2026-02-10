@@ -1,5 +1,7 @@
 package eu.kanade.tachiyomi.extension.ja.mangamura
-
+// import eu.kanade.tachiyomi.multisrc.mangareader.MangaReader  <-- これを消すかコメントアウト
+// import eu.kanade.tachiyomi.source.model.FilterList          <-- これも消すかコメントアウト
+import okhttp3.Request                                         // これは残す
 
 
 class gomuraw : MangaReader(
