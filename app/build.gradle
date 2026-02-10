@@ -1,41 +1,52 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlinx-serialization' // 修正：'kotlin-serialization' から 'kotlinx-' に変更
+apply plugin: 'kotlinx-serialization'
 
 android {
-    // 修正：compileSdk ではなく compileSdkVersion にし、場所を一番上に
+    // SDKのバージョン設定
     compileSdkVersion 34 
     
+    // パッケージの識別子
     namespace "eu.kanade.tachiyomi.extension.ja.gomuraw"
 
+    // ファイルの場所をGradleに教える設定
     sourceSets {
         main {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src']
-            res.srcDirs = ['res']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/kotlin']
+            res.srcDirs = ['src/main/res']
         }
     }
 
-        defaultConfig {
+    defaultConfig {
         applicationId "eu.kanade.tachiyomi.extension.ja.gomuraw"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
         versionName "1.0.0"
 
-        // ここを以下のように修正（" " で囲み、型を合わせます）
+        // YokaiやSuwayomiが拡張機能を識別するための重要なデータ
         manifestPlaceholders = [
             "appName": "GomuRaw",
-            "extClass": ".gomuraw",
-            "nsfw": "1"
+            "extClass": "eu.kanade.tachiyomi.extension.ja.gomuraw.Gomuraw",
+            "nsfw": "0"
         ]
     }
 
-    // ...残りの buildTypes や dependencies は今のままでOK
+    // 署名設定（これがないとインストールできない場合があります）
+    signingConfigs {
+        debug {
+            // プロジェクトのルートに debug.keystore がある前提です
+            storeFile file("../debug.keystore")
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        debug {
             signingConfig signingConfigs.debug
         }
     }
@@ -51,9 +62,8 @@ android {
 }
 
 dependencies {
+    // 必要なライブラリ群
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
     implementation "org.jsoup:jsoup:1.17.2"
-    
-    // 見つからないライブラリの指定をすべて消しました
 }
