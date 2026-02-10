@@ -55,7 +55,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
     
     // 拡張機能本体の機能を使うためのライブラリ群
-    compileOnly "eu.kanade.tachiyomi:lib-multisrc:1.1"
+    compileOnly "eu.kanade.tachiyomi:lib-multisrc:1.5"
     compileOnly "eu.kanade.tachiyomi:source-api:1.1"
     
     // ネット通信（okhttp）などの必要な部品
