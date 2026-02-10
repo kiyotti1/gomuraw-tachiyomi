@@ -14,8 +14,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // 以下の2つのURLを優先的に探しに行くように設定します
-        maven { url = uri("https://maven.mihon.app/outputs/maven") }
+        // Mihon公式が推奨する代替リポジトリ
+        maven { url = uri("https://raw.githubusercontent.com/mihonapp/maven/master") }
         maven { url = uri("https://jitpack.io") }
     }
 }
