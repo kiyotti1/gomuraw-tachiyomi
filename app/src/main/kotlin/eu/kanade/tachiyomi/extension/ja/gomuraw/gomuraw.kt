@@ -3,42 +3,35 @@ package eu.kanade.tachiyomi.extension.ja.gomuraw
 import eu.kanade.tachiyomi.source.model.*
 import okhttp3.Request
 
-/**
- * Gomraw 拡張機能
- * MangaReader クラスを継承し、Tachiyomi の標準形式に準拠させています。
- * 足りない部品（FilterList等）は Stub.kt が補完します。
- */
-class gomuraw : MangaReader("gomuraw", "https://gomuraw.dev/", "ja") {
+class gomuraw : MangaReader("gomuraw", "https://new-url.com/", "ja") {
     
-    // 1. チャプターリストを取得するためのセレクタ（サイト固有の設定）
-    override val chapterIdSelect = "ja-chaps"
+    // 1. 人気の漫画リストを取得するための設定
+    // サイトのトップページやカタログページで、各漫画を囲んでいるHTMLタグを指定します
+    val popularMangaSelector = "div.bs" 
+    val popularMangaNextPageSelector = "div.pagination a.next"
 
-    // 2. 画像読み込み等で使用する Ajax 用の URL 構築
+    // 2. 検索結果の設定
+    override val searchPathSegment = "search"
+    override val searchKeyword = "q"
+
+    // 3. チャプター（各話）のリストを取得する設定
+    override val chapterIdSelect = "ja-chaps" // 前回の設定を維持
+
+    // 4. 画像URLを解析するロジック（ここが最重要）
+    // 通常、MangaReader系はJSONで画像リストを返します
     override fun getAjaxUrl(id: String): String {
         return "$baseUrl/json/chapter?mode=vertical&id=$id"
     }
 
-    // 3. 検索設定
-    override val searchPathSegment = ""
-    override val searchKeyword = "q"
+    // --- 以下は継承した基本機能の調整 ---
 
-    // 4. 検索リクエストの構築
     override fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request {
-        // 現在は単純なキーワード検索のみ実装
         return Request.Builder()
-            .url("$baseUrl/search?q=$query")
+            .url("$baseUrl/$searchPathSegment?page=$page&$searchKeyword=$query")
             .build()
     }
 
-    // 5. フィルターメニューの設定
-    // Stub.kt で定義した各 Filter クラスを使用してメニューを構成
     override fun getFilterList(): FilterList {
-        return FilterList(
-            Note,
-            TypeFilter(),
-            StatusFilter(),
-            LanguageFilter(),
-            SortFilter(),
-        )
+        return FilterList(Note, TypeFilter(), StatusFilter())
     }
 }
