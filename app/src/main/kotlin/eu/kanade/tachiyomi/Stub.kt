@@ -1,11 +1,9 @@
 package eu.kanade.tachiyomi.extension.ja.gomuraw
 
-import eu.kanade.tachiyomi.source.model.*
 import okhttp3.Request
 
-// 親クラスにプロパティを追加して、gomuraw.kt からの上書きを許可します
+// ダミーのモデルクラスを定義してインポートエラーを防ぐ
 open class MangaReader(val name: String, val baseUrl: String, val lang: String) {
-    // これらを追加することで gomuraw.kt のエラーが消えます
     open val popularMangaSelector: String = ""
     open val popularMangaNextPageSelector: String? = null
     open val searchPathSegment: String = ""
@@ -17,9 +15,9 @@ open class MangaReader(val name: String, val baseUrl: String, val lang: String) 
     open fun getFilterList(): FilterList = FilterList()
 }
 
-// フィルター関連のスタブ（変更なし）
-open class Filter(val name: String)
+// 必要なダミークラス群
 class FilterList(vararg filters: Any)
+open class Filter(val name: String)
 class Note : Filter("Note")
 class TypeFilter : Filter("Type")
 class StatusFilter : Filter("Status")
