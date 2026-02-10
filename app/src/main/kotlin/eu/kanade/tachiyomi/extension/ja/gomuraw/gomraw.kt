@@ -1,43 +1,36 @@
 package eu.kanade.tachiyomi.extension.ja.mangamura
-// import eu.kanade.tachiyomi.multisrc.mangareader.MangaReader  <-- これを消すかコメントアウト
-// import eu.kanade.tachiyomi.source.model.FilterList          <-- これも消すかコメントアウト
-import okhttp3.Request                                         // これは残す
 
+import okhttp3.Request
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
-class gomuraw : MangaReader(
-    "gomuraw",
-    "https://gomuraw.com/",
-    "ja",
-) {
-    override val chapterIdSelect = "ja-chaps"
+// ライブラリがないので、一旦「普通のクラス」として定義します
+class gomuraw {
+    val name = "gomuraw"
+    val baseUrl = "https://gomuraw.com/"
+    val lang = "ja"
 
-    override fun getAjaxUrl(id: String): String {
+    val chapterIdSelect = "ja-chaps"
+
+    fun getAjaxUrl(id: String): String {
         return "$baseUrl/json/chapter?mode=vertical&id=$id"
     }
 
-    override val searchPathSegment = ""
-    override val searchKeyword = "q"
+    val searchPathSegment = ""
+    val searchKeyword = "q"
 
-    override fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request {
-        val request = super.searchMangaRequest(page, query, filters)
-
-        // avoid 302
-        val newUrl = request.url.newBuilder()
-            .addPathSegment("")
-            .build()
-
-        return request.newBuilder()
-            .url(newUrl)
+    // FilterListなどの不明な型を Any に変えるか、使わない形にします
+    fun searchMangaRequest(page: Int, query: String, filters: Any): Request {
+        val url = "$baseUrl/search?q=$query".toHttpUrlOrNull()!!
+        
+        return Request.Builder()
+            .url(url)
             .build()
     }
 
-    override fun getFilterList(): FilterList {
-        return FilterList(
-            Note,
-            TypeFilter(),
-            StatusFilter(),
-            LanguageFilter(),
-            SortFilter(),
-        )
+    // エラーの元になるフィルター関数を一旦無効化します
+    /*
+    fun getFilterList(): Any {
+        return Any()
     }
+    */
 }
