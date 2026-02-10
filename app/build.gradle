@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-serialization' // ← これが「2」で伝えたかった大事な行です
-    // ここから下（namespaceやdefaultConfigなど）は今のままで大丈夫です！
-
+apply plugin: 'kotlinx-serialization' // 修正：'kotlin-serialization' から 'kotlinx-' に変更
 
 android {
+    // 修正：compileSdk ではなく compileSdkVersion にし、場所を一番上に
+    compileSdkVersion 34 
+    
     namespace "eu.kanade.tachiyomi.extension.ja.gomuraw"
-    compileSdk 34
 
     sourceSets {
         main {
@@ -18,8 +18,8 @@ android {
 
     defaultConfig {
         applicationId "eu.kanade.tachiyomi.extension.ja.gomuraw"
-        minSdk 21
-        targetSdk 34
+        minSdkVersion 21 // 修正：minSdk ではなく minSdkVersion
+        targetSdkVersion 34 // 修正：targetSdk ではなく targetSdkVersion
         versionCode 1
         versionName "1.0.0"
 
@@ -29,6 +29,7 @@ android {
             nsfw    : 1
         ]
     }
+    // ...残りの buildTypes や dependencies は今のままでOK
 
     buildTypes {
         release {
