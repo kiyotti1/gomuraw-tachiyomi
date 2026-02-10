@@ -1,10 +1,54 @@
-ext {
-    extName = 'gomuraw'
-    extClass = '.gomuraw'
-    
-    baseUrl = 'https://gomuraw.com/'
-    overrideVersionCode = 0
-    isNsfw = true
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlinx-serialization'
 }
 
-apply from: "$rootDir/common.gradle"
+android {
+    compileSdk 34
+    namespace "eu.kanade.tachiyomi.extension.ja.gomuraw"
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+
+    defaultConfig {
+        applicationId "eu.kanade.tachiyomi.extension.ja.gomuraw"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        manifestPlaceholders = [
+            appName : "GomuRaw",
+            extClass: ".gomuraw",
+            nsfw    : 1
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
+    // 必要最低限の Tachiyomi ライブラリ
+    compileOnly "eu.kanade.tachiyomi:lib-subiyomi:1.5"
+}
