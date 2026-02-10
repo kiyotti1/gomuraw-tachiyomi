@@ -1,13 +1,13 @@
-// トップレベルの「管理窓口」です
 buildscript {
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        // ここで「Androidアプリを作るための道具」を登録します
         classpath("com.android.tools.build:gradle:8.2.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+        // ↓ この1行を追加
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.9.22")
     }
 }
 
