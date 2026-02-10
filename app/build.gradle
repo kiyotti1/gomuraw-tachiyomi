@@ -16,19 +16,21 @@ android {
         }
     }
 
-    defaultConfig {
+        defaultConfig {
         applicationId "eu.kanade.tachiyomi.extension.ja.gomuraw"
-        minSdkVersion 21 // 修正：minSdk ではなく minSdkVersion
-        targetSdkVersion 34 // 修正：targetSdk ではなく targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0.0"
 
+        // ここを以下のように修正（" " で囲み、型を合わせます）
         manifestPlaceholders = [
-            appName : "GomuRaw",
-            extClass: ".gomuraw",
-            nsfw    : 1
+            "appName": "GomuRaw",
+            "extClass": ".gomuraw",
+            "nsfw": "1"
         ]
     }
+
     // ...残りの buildTypes や dependencies は今のままでOK
 
     buildTypes {
