@@ -24,11 +24,6 @@ android {
         versionName "1.0.0"
 
         // 名前を Tachiyomi: 形式に変更し、クラスパスを .Gomuraw に簡略化
-        manifestPlaceholders = [
-            "appName": "Tachiyomi: GomuRaw",
-            "extClass": ".Gomuraw",
-            "nsfw": "0"
-        ]
     }
 
     signingConfigs {
