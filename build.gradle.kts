@@ -14,9 +14,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // ↓ この行を追加してください（Tachiyomiの部品置き場です）
-        maven { url = uri("https://raw.githubusercontent.com/tachiyomidb/maven/master") }
+        // 以下の2つのURLを優先的に探しに行くように設定します
+        maven { url = uri("https://maven.mihon.app/outputs/maven") }
         maven { url = uri("https://jitpack.io") }
     }
 }
-
