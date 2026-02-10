@@ -53,9 +53,8 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
     
-    // 特定のタグではなく、現在の最新（master/main）を指定します
-    compileOnly "com.github.keiyoushi.extensions-lib:multisrc:master-SNAPSHOT"
-    compileOnly "com.github.tachiyomiorg:source-api:main-SNAPSHOT"
+    // ネットから探す設定を消して、以下の1行を追加します
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
     implementation "org.jsoup:jsoup:1.17.2"
