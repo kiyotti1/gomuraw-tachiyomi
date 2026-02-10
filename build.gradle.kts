@@ -1,18 +1,20 @@
-allprojects {
+buildscript {
     repositories {
-        mavenCentral()
         google()
-        maven(url = "https://jitpack.io")
+        mavenCentral()
+    }
+    dependencies {
+        // 直接バージョンを指定するように書き換えます
+        classpath("com.android.tools.build:gradle:8.2.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.9.22")
     }
 }
 
-buildscript {
+allprojects {
     repositories {
-        mavenCentral()
         google()
-        maven(url = "https://jitpack.io")
-    }
-    dependencies {
-        classpath(libs.gradle.kotlin)
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
