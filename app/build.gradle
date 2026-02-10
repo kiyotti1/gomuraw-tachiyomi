@@ -1,8 +1,8 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.plugin.serialization'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-serialization' // ← これが「2」で伝えたかった大事な行です
+    // ここから下（namespaceやdefaultConfigなど）は今のままで大丈夫です！
+
 
 android {
     namespace "eu.kanade.tachiyomi.extension.ja.gomuraw"
