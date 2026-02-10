@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android' version '1.9.22'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.22'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
 android {
@@ -48,6 +48,6 @@ android {
 }
 
 dependencies {
-    // 依存関係を「読み取り専用」にするため、ここでシンプルに定義します
+    // 依存関係をシンプルに維持
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
 }
