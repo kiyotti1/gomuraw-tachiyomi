@@ -12,12 +12,12 @@ android {
     // ファイルの場所をGradleに教える設定
     sourceSets {
         main {
-            manifest.srcFile 'src/main/AndroidManifest.xml'
-            java.srcDirs = ['src/main/kotlin']
-            res.srcDirs = ['src/main/res']
+            // ここを「app直下」にあるファイル名に合わせます
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
         }
     }
-
     defaultConfig {
         applicationId "eu.kanade.tachiyomi.extension.ja.gomuraw"
         minSdkVersion 21
