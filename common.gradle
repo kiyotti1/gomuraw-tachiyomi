@@ -3,36 +3,31 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlinx-serialization'
 
 android {
-    // 数値を直接指定して、外部ファイルへの依存を消します
     compileSdk 34
-
     namespace "eu.kanade.tachiyomi.extension"
 
     sourceSets {
         main {
-            // あなたのフォルダ構成に合わせて調整
             manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src/main/kotlin']
+            java.srcDirs = ['src'] // あなたのソースコードがある場所
             res.srcDirs = ['res']
-            assets.srcDirs = ['assets']
         }
     }
 
     defaultConfig {
+        applicationId "eu.kanade.tachiyomi.extension.gomuraw"
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0.0"
 
-        // マニフェストに渡す変数の最低限の設定
         manifestPlaceholders = [
-            appName : "Gomuraw Extension",
-            extClass: ".Gomuraw", // あなたのSource.ktのクラス名に合わせて修正してください
+            appName : "Gomuraw",
+            extClass: ".Gomuraw",
             nsfw    : 1
         ]
     }
 
-    // 署名設定（Actionsでビルドするために一時的にダミーまたはデバッグ用を使用）
     buildTypes {
         release {
             minifyEnabled false
@@ -48,13 +43,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
-    buildFeatures {
-        buildConfig true
-    }
 }
 
 dependencies {
-    // 外部のコアライブラリに頼らず、ネットから必要なものを直接取ってき
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
+    // もし Source.kt でエラーが出るなら、ここに必要なライブラリを追加します
 }
