@@ -8,7 +8,7 @@ import okhttp3.Request
  * MangaReader クラスを継承し、Tachiyomi の標準形式に準拠させています。
  * 足りない部品（FilterList等）は Stub.kt が補完します。
  */
-class gomuraw : MangaReader("gomuraw", "https://gomuraw.com/", "ja") {
+class gomuraw : MangaReader("gomuraw", "https://gomuraw.dev/", "ja") {
     
     // 1. チャプターリストを取得するためのセレクタ（サイト固有の設定）
     override val chapterIdSelect = "ja-chaps"
