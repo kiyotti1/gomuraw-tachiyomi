@@ -36,19 +36,17 @@ android {
     // 署名設定（これがないとインストールできない場合があります）
     signingConfigs {
         debug {
-            // プロジェクトのルートに debug.keystore がある前提です
-            storeFile file("../debug.keystore")
+           
         }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            // release でも debug 用の自動署名を使うように強制
             signingConfig signingConfigs.debug
         }
-        debug {
-            signingConfig signingConfigs.debug
-        }
+        
     }
 
     compileOptions {
