@@ -55,7 +55,6 @@ android {
 }
 
 dependencies {
-    // 外部のコアライブラリに頼らず、ネットから必要なものを直接取ってきます
-    implementation "eu.kanade.tachiyomi:lib-subiyomi:1.5"
+    // 外部のコアライブラリに頼らず、ネットから必要なものを直接取ってき
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
 }
