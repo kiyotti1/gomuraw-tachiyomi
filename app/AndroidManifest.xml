@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="eu.kanade.tachiyomi.extension.ja.gomuraw.Gomuraw">
+    package="eu.kanade.tachiyomi.extension.ja.gomuraw">
 
     <application>
         <meta-data
             android:name="tachiyomi.extension.class"
-            android:value=".gomuraw" />
+            android:value="eu.kanade.tachiyomi.extension.ja.gomuraw.Gomuraw" />
         <meta-data
             android:name="tachiyomi.extension.version"
             android:value="1" />
