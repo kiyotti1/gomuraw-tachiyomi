@@ -1,4 +1,4 @@
-package eu.kanade.tachiyomi.extension.ja.gomuraw
+package eu.kanade.tachiyomi.extension.ja.mangamura
 
 import okhttp3.Request
 // インポートを削除（Stub内に定義したため不要）
